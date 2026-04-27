@@ -14,7 +14,7 @@ async function requestJson<T>(url: string, init?: RequestInit): Promise<T> {
   const data = await response.json().catch(() => null);
 
   if (!response.ok) {
-    throw new Error(data?.error || 'Falha ao se comunicar com a API.');
+    throw new Error(data?.error || 'Não foi possível processar sua solicitação.');
   }
 
   return data as T;
