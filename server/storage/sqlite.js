@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 import { fileURLToPath } from 'node:url';
@@ -7,7 +8,9 @@ import { seedProducts } from '../catalog.js';
 import { createOrderNumber, httpError, roundMoney } from './shared.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const dataDir = path.join(__dirname, '..', 'data');
+const dataDir = process.env.VERCEL
+  ? path.join(os.tmpdir(), 'cafe-shop-data')
+  : path.join(__dirname, '..', 'data');
 
 fs.mkdirSync(dataDir, { recursive: true });
 
