@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.DS_Store
+*.log
+server/data/*.db
+server/data/*.sqlite
+server/data/*.sqlite3
+server/data/*-journal
+server/data/*-shm
+server/data/*-wal
